@@ -79,3 +79,5 @@ gem "litestack", "~> 0.2.6"
 gem "authentication-zero", "~> 2.16", :group => :development
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.7"
+
+gem "shoelace-rails", "~> 0.4.1"

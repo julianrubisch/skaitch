@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_20_072238) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_20_074244) do
   create_table "accounts", force: :cascade do |t|
   end
 
@@ -62,6 +62,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_072238) do
     t.index ["user_id"], name: "index_password_reset_tokens_on_user_id"
   end
 
+  create_table "prompts", force: :cascade do |t|
+    t.string "title"
+    t.binary "prompt_image"
+    t.integer "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_prompts_on_account_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "user_agent"
@@ -86,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_072238) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "email_verification_tokens", "users"
   add_foreign_key "password_reset_tokens", "users"
+  add_foreign_key "prompts", "accounts"
   add_foreign_key "sessions", "users"
   add_foreign_key "users", "accounts"
 end

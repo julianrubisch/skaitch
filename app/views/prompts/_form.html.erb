@@ -1,0 +1,31 @@
+<%= sl_form_with(model: prompt) do |form| %>
+  <% if prompt.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(prompt.errors.count, "error") %> prohibited this prompt from being saved:</h2>
+
+      <ul>
+        <% prompt.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.rich_text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :prompt_image, style: "display: block" %>
+    <%= form.file_field :prompt_image %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

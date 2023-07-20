@@ -1,0 +1,11 @@
+<h1>Prompts</h1>
+
+<div id="prompts">
+  <% @prompts.each do |prompt| %>
+    <%= link_to prompt do %>
+      <%= render "index", prompt: prompt %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "New prompt", new_prompt_path %>

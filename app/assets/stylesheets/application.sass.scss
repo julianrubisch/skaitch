@@ -1,3 +1,7 @@
 // Entry point for your Sass build
-@import "@shoelace-style/shoelace/dist/themes/light.css";
+@import "@shoelace-style/shoelace/dist/themes/light";
+
+body {
+  font-family: var(--sl-font-sans);
+}
 @import 'actiontext.css';

@@ -1,6 +1,6 @@
 <h1>Sign up</h1>
 
-<%= form_with(url: sign_up_path) do |form| %>
+<%= sl_form_with(url: sign_up_path) do |form| %>
   <% if @user.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>

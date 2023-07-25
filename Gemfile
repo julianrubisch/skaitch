@@ -81,3 +81,5 @@ gem "authentication-zero", "~> 2.16", :group => :development
 gem "bcrypt", "~> 3.1.7"
 
 gem "shoelace-rails", "~> 0.4.1"
+
+gem "replicate-rails", require: "replicate_rails"

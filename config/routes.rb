@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ReplicateRails::Engine => "/replicate/webhook"
+
   resources :prompts
   get  "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"

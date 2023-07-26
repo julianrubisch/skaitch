@@ -21,14 +21,16 @@ class PromptsController < ApplicationController
 
   # POST /prompts or /prompts.json
   def create
+    prompt_image = prompt_params.delete(:prompt_image)
+
     @prompt = Prompt.new(prompt_params)
     @prompt.account = Current.account
+    @prompt.prompt_image = prompt_image.read
+    @prompt.content_type = prompt_image.content_type
 
     model = Replicate.client.retrieve_model("stability-ai/stable-diffusion-img2img")
     version = model.latest_version
-    version.predict({prompt: prompt_params[:title], image: prompt_image_data_url}, replicate_rails_url)
-
-    # TODO scale down image to max 768 width or height before proceeding
+    version.predict({prompt: prompt_params[:title], image: @prompt.data_url}, replicate_rails_url)
 
     respond_to do |format|
       if @prompt.save
@@ -73,15 +75,5 @@ class PromptsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def prompt_params
       params.require(:prompt).permit(:title, :description, :prompt_image, :account_id)
-    end
-
-    def prompt_image_data_url
-      encoded_data = Base64.strict_encode64(prompt_image.read)
-
-      "data:image/#{prompt_image.content_type};base64,#{encoded_data}"
-    end
-
-    def prompt_image
-      @prompt_image ||= prompt_params[:prompt_image]
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_20_074244) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_25_131445) do
   create_table "accounts", force: :cascade do |t|
   end
 
@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_074244) do
     t.integer "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "content_type"
     t.index ["account_id"], name: "index_prompts_on_account_id"
   end
 

@@ -1,6 +1,6 @@
 <h1>Prompts</h1>
 
-<div id="prompts">
+<div id="prompts" class="grid">
   <% @prompts.each do |prompt| %>
     <%= link_to prompt do %>
       <%= render "index", prompt: prompt %>

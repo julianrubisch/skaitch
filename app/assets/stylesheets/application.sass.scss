@@ -1,7 +1,21 @@
 // Entry point for your Sass build
 @import "@shoelace-style/shoelace/dist/themes/light";
+@import "@picocss/pico/scss/pico";
 
 body {
   font-family: var(--sl-font-sans);
 }
+
+.grid {
+  @media(min-width: "992px") {
+    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+  }
+}
+
+sl-card {
+  @media(min-width: "992px") {
+    max-width: 20rem;
+  }
+}
+
 @import 'actiontext.css';

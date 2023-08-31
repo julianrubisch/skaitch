@@ -28,12 +28,10 @@ class PromptsController < ApplicationController
     @prompt.prompt_image = prompt_image.read
     @prompt.content_type = prompt_image.content_type
 
-    model = Replicate.client.retrieve_model("stability-ai/stable-diffusion-img2img")
-    version = model.latest_version
-    version.predict({prompt: prompt_params[:title], image: @prompt.data_url}, replicate_rails_url)
-
     respond_to do |format|
       if @prompt.save
+        GenerateImageJob.perform_later(prompt: @prompt)
+
         format.html { redirect_to prompt_url(@prompt), notice: "Prompt was successfully created." }
         format.json { render :show, status: :created, location: @prompt }
       else

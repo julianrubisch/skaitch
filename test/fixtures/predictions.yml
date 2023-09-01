@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prompt: one
+  replicate_id: MyString
+  replicate_version: MyString
+  prediction_image: 
+  logs: MyText
+
+two:
+  prompt: two
+  replicate_id: MyString
+  replicate_version: MyString
+  prediction_image: 
+  logs: MyText

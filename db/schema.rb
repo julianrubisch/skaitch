@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_01_153302) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_03_133702) do
   create_table "accounts", force: :cascade do |t|
   end
 
@@ -71,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_153302) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prompt_id"], name: "index_predictions_on_prompt_id"
+    t.index ["replicate_id"], name: "index_predictions_on_replicate_id", unique: true
   end
 
   create_table "prompts", force: :cascade do |t|

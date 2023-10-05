@@ -13,4 +13,15 @@
     <strong>Prompt image:</strong>
     <%= image_tag prompt.data_url %>
   </p>
+
+  <p>
+    <strong>Generated images:</strong>
+    <% prompt.predictions.each do |prediction| %>
+      <% if prediction.prediction_image.present? %>
+        <%= image_tag prediction.data_url %>
+      <% else %>
+        <sl-spinner style="font-size: 8rem;"></sl-spinner>
+      <% end %>
+    <% end %>
+  </p>
 </div>

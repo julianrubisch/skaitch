@@ -4,7 +4,7 @@ class Prompt < ApplicationRecord
   include AccountScoped
 
   belongs_to :account
-  has_many :predictions
+  has_many :predictions, dependent: :destroy
   has_rich_text :description
 
   validates :title, :prompt_image, :content_type, presence: true

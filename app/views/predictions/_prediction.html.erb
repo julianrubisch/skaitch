@@ -1,0 +1,9 @@
+<%= turbo_stream_from prediction %>
+
+<div id="<%= dom_id(prediction) %>">
+  <% if prediction.prediction_image.present? %>
+    <%= image_tag prediction.data_url %>
+  <% else %>
+    <sl-spinner style="font-size: 8rem;"></sl-spinner>
+  <% end %>
+</div>

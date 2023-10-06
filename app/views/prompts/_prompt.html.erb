@@ -16,12 +16,9 @@
 
   <p>
     <strong>Generated images:</strong>
-    <% prompt.predictions.each do |prediction| %>
-      <% if prediction.prediction_image.present? %>
-        <%= image_tag prediction.data_url %>
-      <% else %>
-        <sl-spinner style="font-size: 8rem;"></sl-spinner>
-      <% end %>
-    <% end %>
+    <%= turbo_stream_from :predictions %>
+    <div id="<%= dom_id(prompt, :predictions) %>">
+      <%= render prompt.predictions %>
+    </div>
   </p>
 </div>

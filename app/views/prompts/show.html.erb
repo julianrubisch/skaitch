@@ -1,10 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @prompt %>
-
-<div>
-  <%= link_to "Edit this prompt", edit_prompt_path(@prompt) %> |
+<section>
   <%= link_to "Back to prompts", prompts_path %>
+</section>
 
-  <%= button_to "Destroy this prompt", @prompt, method: :delete %>
-</div>
+<%= render @prompt %>

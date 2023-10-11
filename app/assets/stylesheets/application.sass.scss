@@ -6,16 +6,28 @@ body {
   font-family: var(--sl-font-sans);
 }
 
-.grid {
-  @media(min-width: "992px") {
-    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+
+sl-card {
+  &.card-image {
+    @media(min-width: "992px") {
+      max-width: 20rem;
+    }
+  }
+
+  &.card-header [slot='header'] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &.card-header h3 {
+    margin: 0;
+  }
+
+  &.card-header sl-icon-button {
+    font-size: var(--sl-font-size-medium);
   }
 }
 
-sl-card {
-  @media(min-width: "992px") {
-    max-width: 20rem;
-  }
-}
 
 @import 'actiontext.css';

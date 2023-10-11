@@ -1,6 +1,7 @@
-<sl-card class="card-image" id="<%= dom_id prompt %>">
-  <!-- we will use this slot to render the prompt image -->
-  <%= image_tag prompt.data_url, alt: prompt.title, slot: "image" %>
+<sl-card class="card-index" id="<%= dom_id prompt %>">
+  <div slot="header">
+    <strong><%= prompt.title %></strong>
+  </div>
 
-  <strong><%= prompt.title %></strong>
+  <%= image_tag prompt.data_url, alt: prompt.title %>
 </sl-card>

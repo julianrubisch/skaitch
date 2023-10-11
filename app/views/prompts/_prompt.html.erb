@@ -1,24 +1,36 @@
-<div id="<%= dom_id prompt %>">
-  <p>
-    <strong>Title:</strong>
-    <%= prompt.title %>
-  </p>
+<sl-card class="card-header card-prompt" id="<%= dom_id prompt %>">
+  <div slot="header">
+    <strong><%= prompt.title %></strong>
+    <sl-dropdown>
+      <sl-icon-button name="three-dots-vertical" label="Actions" slot="trigger"></sl-icon-button>
+      <sl-menu>
+        <sl-menu-item>
+          <sl-icon slot="prefix" name="pencil"></sl-icon>
+          <%= link_to "Edit this prompt", edit_prompt_path(prompt) %>
+        </sl-menu-item>
+        <sl-menu-item>
+          <sl-icon slot="prefix" name="trash"></sl-icon>
+          <%= button_to "Destroy this prompt", prompt, method: :delete %>
+        </sl-menu-item>
+      </sl-menu>
+    </sl-dropdown>
+  </div>
 
-  <p>
-    <strong>Description:</strong>
-    <%= prompt.description %>
-  </p>
-
-  <p>
-    <strong>Prompt image:</strong>
-    <%= image_tag prompt.data_url %>
-  </p>
-
-  <p>
-    <strong>Generated images:</strong>
-    <%= turbo_stream_from :predictions %>
+  <%= turbo_stream_from :predictions %>
+  <div class="grid">
+    <div>
+      <%= image_tag prompt.data_url %>
+    </div>
     <div id="<%= dom_id(prompt, :predictions) %>">
       <%= render prompt.predictions %>
     </div>
-  </p>
-</div>
+  </div>
+  
+  <div slot="footer">
+    <%= prompt.description.presence || "No Description" %>
+  </div>
+</sl-card>
+
+
+
+

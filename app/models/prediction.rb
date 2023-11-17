@@ -4,7 +4,7 @@ class Prediction < ApplicationRecord
   after_create_commit -> { broadcast_append_later_to :predictions, target: dom_id(prompt, :predictions) }
   after_update_commit -> { broadcast_replace_later_to self }
 
-  belongs_to :prompt
+  belongs_to :prompt, touch: true
 
   def data_url
     encoded_data = Base64.strict_encode64(prediction_image)

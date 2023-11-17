@@ -3,5 +3,8 @@
     <strong><%= prompt.title %></strong>
   </div>
 
-  <%= image_tag prompt.data_url, alt: prompt.title %>
+  <div class="grid">
+    <%= image_tag prompt.data_url, alt: prompt.title %>
+    <%= render prompt.predictions %>
+  </div>
 </sl-card>

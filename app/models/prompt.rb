@@ -2,10 +2,15 @@ require "vips"
 
 class Prompt < ApplicationRecord
   include AccountScoped
+  include Litesearch::Model
 
   belongs_to :account
   has_many :predictions, dependent: :destroy
   has_rich_text :description
+
+  litesearch do |schema|
+    schema.fields [:title]
+  end
 
   validates :title, :prompt_image, :content_type, presence: true
 

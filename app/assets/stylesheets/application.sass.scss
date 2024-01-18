@@ -2,10 +2,17 @@
 @import "@shoelace-style/shoelace/dist/themes/light";
 @import "@picocss/pico/scss/pico";
 
+:root {
+  --grid-spacing-vertical: 1rem;
+}
+
 body {
   font-family: var(--sl-font-sans);
 }
 
+.grid {
+  grid-template-columns: repeat(6, minmax(0%, 1fr));
+}
 
 sl-card {
   &.card-image {

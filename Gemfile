@@ -83,3 +83,5 @@ gem "bcrypt", "~> 3.1.7"
 gem "shoelace-rails", "~> 0.4.1"
 
 gem "replicate-rails", require: "replicate_rails"
+
+gem "faker", "~> 3.2", :group => :development

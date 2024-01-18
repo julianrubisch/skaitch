@@ -1,5 +1,11 @@
 <h1>Prompts</h1>
 
+<section>
+  <sl-input name="search" type="search" placeholder="Search for a prompt title" clearable>
+    <sl-icon name="search" slot="suffix"></sl-icon>
+  </sl-input>
+</section>
+
 <%= turbo_frame_tag :prompts, class: "grid" do %>
   <% @prompts.each do |prompt| %>
     <%= link_to prompt do %>

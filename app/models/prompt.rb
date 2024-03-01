@@ -3,6 +3,7 @@ require "vips"
 class Prompt < ApplicationRecord
   include AccountScoped
   include Litesearch::Model
+  include Litemetric::Measurable
 
   belongs_to :account
   has_many :predictions, dependent: :destroy
@@ -25,9 +26,11 @@ class Prompt < ApplicationRecord
   private
 
   def scale_prompt_image
-    image = Vips::Image.new_from_buffer(prompt_image, "")
-    pipeline = ImageProcessing::Vips.source(image)
+    measure("scale_prompt_image") do
+      image = Vips::Image.new_from_buffer(prompt_image, "")
+      pipeline = ImageProcessing::Vips.source(image)
 
-    self.prompt_image = pipeline.resize_to_fit(768, 768).call.read
+      self.prompt_image = pipeline.resize_to_fit(768, 768).call.read
+    end
   end
 end
